@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>[Practice] Creating a simple caro chessboard</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="Game.js"></script>
+	<script type="text/javascript" src="Item.js"></script>
+</head>
+<body>
+	<header class="z-depth">
+		<div class="boxPlayer">
+			<div class="player">
+				<div style="display: flex; width: 80%;">
+					<span id="winX" style="color: #008eff; font-size: 0.8rem">Win:0<span>
+				</div>
+				<div style="display: flex;justify-content: flex-end; width: 20%;">
+					<span style="color: #008eff;">X<span>
+				</div>
+			</div>
+			<div class="player">
+				<div style="display: flex; width: 20%;">
+					<span style="color: #FF5722;">O<span>
+				</div>
+				<div style="display: flex;justify-content: flex-end; width: 80%;">
+					<span id="winO" style="color: #FF5722; font-size: 0.8rem">Win:0<span>
+				</div>
+			</div>
+			<button id="changerStatus">Start</button>
+		</div>
+	</header>
+	<div class="regBox">
+		<div class="gameBox z-depth"></div>
+	</div>
+	<div class="dialog">
+		<div class="dialogBG"></div>
+		<div class="content z-depth">
+			<div class="selectPlayer">
+				<h3 style="text-align: center;">Người chơi đầu tiên</h3>
+				<div class="boxSelectPlayer">
+					<div class="PlayerX z-depth" player="1">X</div>
+					<div class="PlayerO z-depth" player="0">O</div>
+				</div>
+			</div>
+			<div class="win">
+				<div style="display: flex; justify-content: center;">
+					<div class="player"></div>
+				</div>
+				<div>
+					Chiến thắng!!
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.RedT = new Game();
+	</script>
+</body>
+</html>

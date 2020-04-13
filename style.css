@@ -1,0 +1,263 @@
+
+#xt_auth_container, #xt_auth_iframe, noframes + div {
+	opacity: 0;
+	position: absolute !important;
+	top: -100px !important;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body {
+	background: #f6f6f6;
+	font-family: arial;
+}
+.z-depth {
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.regBox {
+	background: #fff;
+	margin: 60px auto 0 auto;
+	max-width: 800px;
+}
+header {
+	position: fixed;
+	top: 0;
+	height: 49px;
+	width: 100%;
+	background: #fff;
+	z-index: 6666;
+	left: 0;
+}
+.boxPlayer {
+	max-width: 700px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	align-items: center;
+}
+.boxPlayer .player {
+	display: flex;
+	height: 100%;
+	width: 50%;
+	align-items: center;
+	margin-left: 7px;
+}
+.boxPlayer .player + .player {
+	margin-right: 53px;
+	margin-left: 18px;
+}
+#changerStatus {
+	padding: 7px 15px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background: #f0f0f0;
+}
+#changerStatus:hover {
+	background: #eaeaea;
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+#changerStatus:active {
+	background-color: #f0f0f0;
+}
+
+.gameBox, .game {
+	background: #fff;
+	cursor: pointer;
+	position: relative;
+	margin: 0 auto;
+	width: 800px;
+	height: 800px;
+	/* touch-action: none; */
+}
+.gameBox .item {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: left .2s, top .2s;
+}
+.gameBox .item * {
+	/* touch-action: none; */
+	pointer-events: none;
+}
+.gameBox .item .ripple, .gameBox .item .defineXO {
+	width: 100%;
+	height: 100%;
+	z-index: 666;
+	position: absolute;
+}
+.gameBox .item .ripple .ripple-element {
+	width: 100%;
+	height: 100%;
+	z-index: 666;
+	position: absolute;
+	background-color: #9E9E9E;
+	border-radius: 50%;
+	pointer-events: none;
+	-webkit-transition: opacity,-webkit-transform 0ms cubic-bezier(0,0,.2,1);
+	transition: opacity,-webkit-transform 0ms cubic-bezier(0,0,.2,1);
+	transition: opacity,transform 0ms cubic-bezier(0,0,.2,1);
+	transition: opacity,transform 0ms cubic-bezier(0,0,.2,1),
+	-webkit-transform 0ms cubic-bezier(0,0,.2,1);
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	opacity: 0;
+}
+.gameBox.isPlayX .ripple .ripple-element{
+	background: #2196F3;
+}
+.gameBox.isPlayO .ripple .ripple-element {
+	background: #FF5722;
+}
+
+.gameBox .item.activeX .ripple .ripple-element {
+	background: none;
+}
+.gameBox .item.activeO .ripple .ripple-element {
+	background: none;
+}
+
+.gameBox .item:hover .ripple .ripple-element {
+	transform: scale(1.3);
+	opacity: 0.2;
+}
+.gameBox .item:before {
+	position: absolute;
+	content: '';
+	border: 1px solid #e0e0e0;
+	width: 100%;
+	height: 100%;
+}
+.gameBox .item .defineXO {
+	z-index: 888;
+}
+
+.gameBox .item .defineX {
+	transform: translate(12px, 5px) rotate(-45deg);
+	pointer-events: none;
+	opacity: 0;
+}
+.gameBox .item .defineX::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	height: 0px;
+	border: solid 2px #2196F3;
+	border-right: none;
+	border-bottom: none;
+	border-top: none;
+	pointer-events: none;
+	transform: translate(7px, -7px);
+	transition: height 150ms cubic-bezier(0,0,.2,1);
+}
+.gameBox .item .defineX::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	width: 0px;
+	border: solid 2px #2196F3;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	pointer-events: none;
+	transition: width 150ms cubic-bezier(0,0,.2,1);
+}
+.gameBox .item.activeX .defineX {
+	opacity: 1;
+}
+
+.gameBox .item.activeX .defineX::after {
+	height: 16px;
+}
+.gameBox .item.activeX .defineX::before {
+	width: 16px;
+}
+
+.gameBox .item .defineO {
+	pointer-events: none;
+	opacity: 0;
+}
+.gameBox .item .defineO::after {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	content: '';
+	border: 2px solid #FF5722;
+	width: 55%;
+	height: 55%;
+	border-radius: 50%;
+	pointer-events: none;
+}
+.gameBox .item.activeO .defineO {
+	opacity: 1;
+}
+
+.dialog{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+.dialog .dialogBG {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background: #00000047;
+	left: 0;
+}
+.dialog .content{
+	position: relative;
+	margin: 22px auto 0 auto;
+	background: #fff;
+	border-radius: 3px;
+	transition: width .15s;
+	width: 50px;
+}
+.dialog .content {
+	margin: 11% auto 0 auto;
+}
+.selectPlayer {
+	overflow: hidden;
+}
+.selectPlayer .boxSelectPlayer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.selectPlayer .boxSelectPlayer div, .dialog .content .win .player {
+	width: 122px;
+	display: flex;
+	align-items: center;
+	height: 122px;
+	justify-content: center;
+	margin: 10px;
+	font-size: 1.7rem;
+	color: #fff;
+	transition: transform .2s;
+}
+.PlayerX {
+	background: #03A9F4;
+}
+.PlayerO {
+	background: #FF9800;
+}
+.selectPlayer .boxSelectPlayer div:hover {
+	transform: scale(1.1);
+}
+.dialog .content .win {
+	display: none;
+	padding: 30px;
+	text-align: center;
+	font-size: 1.3rem;
+}
